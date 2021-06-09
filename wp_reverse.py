@@ -70,7 +70,7 @@ parser = OptionParser()
 parser.add_option("--target", help="URL for base wordpress install (ex: http://domain.com/wordpress)",dest="target")
 parser.add_option("--theme", help="Wordpress theme to upload reverse shell to", dest="theme")
 parser.add_option("--user", help="Username to authenticate with", dest="user")
-parser.add_option("--pass", help="Password to authenitcate with", dest="passwd")
+parser.add_option("--pass", help="Password to authenticate with", dest="passwd")
 parser.add_option("--revaddr", help="IP address for reverse shell to connect to", dest="rev_ip")
 parser.add_option("--revport", help="Port for reverse shell to connect to", dest="rev_port")
 
